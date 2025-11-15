@@ -243,7 +243,7 @@ export default function App() {
       <section id="order-form" className="container mx-auto px-4 py-8">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-6" dir="rtl">
-            <h2 className="mb-2">اطلب المكتب ديالك دابا! 🎯</h2>
+            <h2 className="text-3xl md:text-4xl mb-2" style={{ fontWeight: 900 }}>اطلب المكتب ديالك دابا! 🎯</h2>
             <p className="text-muted-foreground">
               الدفع عند الاستلام - توصيل مجاني لجميع المدن
             </p>
@@ -476,7 +476,7 @@ export default function App() {
             </div>
 
             <div className="text-center mb-6" dir="rtl">
-              <h2 className="mb-2">اطلب المكتب ديالك دابا! 🎯</h2>
+              <h2 className="text-3xl md:text-4xl mb-2" style={{ fontWeight: 900 }}>اطلب المكتب ديالك دابا! 🎯</h2>
               <p className="text-muted-foreground">
                 الدفع عند الاستلام - توصيل مجاني لجميع المدن
               </p>
