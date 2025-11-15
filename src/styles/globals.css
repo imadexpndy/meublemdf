@@ -187,3 +187,20 @@
 html {
   font-size: var(--font-size);
 }
+
+/* Cairo Font for Arabic conversion-focused typography */
+body {
+  font-family: 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Make titles super bold for conversion */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 800 !important;
+}
+
+/* Extra bold main title */
+h1 {
+  font-weight: 900 !important;
+  letter-spacing: -0.02em;
+}

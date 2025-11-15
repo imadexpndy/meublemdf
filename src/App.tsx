@@ -107,7 +107,7 @@ export default function App() {
         <div className="container mx-auto px-4 pt-4">
           {/* Header */}
           <div className="text-center mb-6">
-            <h1 className="text-3xl md:text-4xl font-extrabold mb-2" dir="rtl">
+            <h1 className="text-3xl md:text-4xl md:text-5xl mb-2" dir="rtl" style={{ fontWeight: 900 }}>
               مكتب قابل للطي - مصنوع من خشب MDF
             </h1>
             <Badge className="mt-3 bg-[#10B981] text-white border-0">
