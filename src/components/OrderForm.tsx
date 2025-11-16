@@ -80,38 +80,56 @@ export function OrderForm({ scrollToForm, preselectedColor }: OrderFormProps) {
       console.log('🚀 Sending order to Google Script:', orderData);
       console.log('📡 Script URL:', GOOGLE_SCRIPT_URL);
 
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
+      // Send request in background with timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 second timeout
+
+      // Fire and forget - don't wait for response
+      fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors', // Important for Google Apps Script
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(orderData)
-      });
+        body: JSON.stringify(orderData),
+        signal: controller.signal
+      })
+        .then(() => {
+          clearTimeout(timeoutId);
+          console.log('✅ Request sent successfully');
+        })
+        .catch((error) => {
+          clearTimeout(timeoutId);
+          if (error.name !== 'AbortError') {
+            console.error('Error submitting order:', error);
+          }
+        });
 
-      console.log('✅ Request sent successfully');
-
-      // With no-cors mode, we can't read the response, so we assume success
-      toast.success('تم استلام طلبك بنجاح! سنتصل بك قريباً 🎉', {
-        duration: 5000,
-      });
-
-      // Reset form
-      setFormData({
-        name: '',
-        phone: '',
-        city: '',
-        address: '',
-        color: '',
-        quantity: '1'
-      });
+      // Show success immediately (optimistic UI)
+      // Since we use no-cors, we can't verify the response anyway
+      setTimeout(() => {
+        toast.success('تم استلام طلبك بنجاح! سنتصل بك قريباً 🎉', {
+          duration: 5000,
+        });
+        
+        // Reset form
+        setFormData({
+          name: '',
+          phone: '',
+          city: '',
+          address: '',
+          color: '',
+          quantity: '1'
+        });
+        
+        setIsSubmitting(false);
+      }, 800); // Show success after 800ms for better UX
 
     } catch (error) {
       console.error('Error submitting order:', error);
       toast.error('حدث خطأ. المرجو المحاولة مرة أخرى', {
         duration: 3000,
       });
-    } finally {
       setIsSubmitting(false);
     }
   };
