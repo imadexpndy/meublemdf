@@ -1,7 +1,14 @@
 // Facebook Conversions API Integration
 const FB_ACCESS_TOKEN = 'EAAT26bj1waMBP5rZCBRXZCvghDIAiQLxylgpt7knw4xs7xgSk6x7rFi1jbB6iQVQ55ZCclcwrzQ9ZAED2DognlzbZAzHO1MOgyUKEzXNs6MkeV8mPuxj3YzSOUYzyxWJpnLBmfPad1yTEG9uMmJmSdMpu9chJ55LfZBF3wbrZBFkhHC33P8AIDoQkuZA2F6r4AZDZD';
-const FB_PIXEL_ID = 'YOUR_PIXEL_ID'; // Replace with your Facebook Pixel ID
+const FB_PIXEL_ID = '1041286288096140'; // Your Facebook Pixel ID
 const FB_API_VERSION = 'v18.0';
+
+// Declare fbq function for TypeScript
+declare global {
+  interface Window {
+    fbq?: (...args: any[]) => void;
+  }
+}
 
 // Hash function for user data (required by Facebook)
 async function sha256(message: string): Promise<string> {
@@ -35,6 +42,17 @@ export async function sendFacebookPurchaseEvent(data: PurchaseEventData): Promis
   try {
     const eventTime = Math.floor(Date.now() / 1000);
     const eventId = `order_${eventTime}_${Math.random().toString(36).substr(2, 9)}`;
+
+    // Fire browser pixel event (for deduplication with server event)
+    if (window.fbq) {
+      window.fbq('track', 'Purchase', {
+        currency: data.currency || 'MAD',
+        value: data.value || 0,
+      }, {
+        eventID: eventId // Same event ID for deduplication
+      });
+      console.log('🌐 Browser Pixel Purchase event fired with eventID:', eventId);
+    }
 
     // Hash user data
     const userData: any = {
