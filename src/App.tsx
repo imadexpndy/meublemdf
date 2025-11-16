@@ -524,16 +524,24 @@ export default function App() {
               <ul className="space-y-2 text-sm text-white/80">
                 <li>
                   <button 
-                    onClick={() => setShowPrivacyPolicy(true)}
-                    className="hover:text-[#D4A574] cursor-pointer transition-colors text-right w-full"
+                    type="button"
+                    onClick={() => {
+                      console.log('Privacy Policy clicked!');
+                      setShowPrivacyPolicy(true);
+                    }}
+                    className="hover:text-[#D4A574] cursor-pointer transition-colors text-right w-full bg-transparent border-none p-0 font-inherit text-white/80"
                   >
                     سياسة الخصوصية
                   </button>
                 </li>
                 <li>
                   <button 
-                    onClick={() => setShowTermsConditions(true)}
-                    className="hover:text-[#D4A574] cursor-pointer transition-colors text-right w-full"
+                    type="button"
+                    onClick={() => {
+                      console.log('Terms & Conditions clicked!');
+                      setShowTermsConditions(true);
+                    }}
+                    className="hover:text-[#D4A574] cursor-pointer transition-colors text-right w-full bg-transparent border-none p-0 font-inherit text-white/80"
                   >
                     الشروط والأحكام
                   </button>
