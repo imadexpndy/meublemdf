@@ -163,7 +163,7 @@ export function OrderForm({ scrollToForm, preselectedColor }: OrderFormProps) {
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           onFocus={handleInputFocus}
-          className="text-right bg-input-background border-border"
+          className="text-right bg-input-background border-border placeholder:opacity-50"
           required
         />
       </div>
@@ -179,7 +179,7 @@ export function OrderForm({ scrollToForm, preselectedColor }: OrderFormProps) {
           value={formData.phone}
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
           onFocus={handleInputFocus}
-          className="text-right bg-input-background border-border"
+          className="text-right bg-input-background border-border placeholder:opacity-50"
           required
         />
       </div>
@@ -195,7 +195,7 @@ export function OrderForm({ scrollToForm, preselectedColor }: OrderFormProps) {
           value={formData.city}
           onChange={(e) => setFormData({ ...formData, city: e.target.value })}
           onFocus={handleInputFocus}
-          className="text-right bg-input-background border-border"
+          className="text-right bg-input-background border-border placeholder:opacity-50"
           required
         />
       </div>
@@ -211,7 +211,7 @@ export function OrderForm({ scrollToForm, preselectedColor }: OrderFormProps) {
           value={formData.address}
           onChange={(e) => setFormData({ ...formData, address: e.target.value })}
           onFocus={handleInputFocus}
-          className="text-right bg-input-background border-border"
+          className="text-right bg-input-background border-border placeholder:opacity-50"
           required
         />
       </div>
