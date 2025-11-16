@@ -23,7 +23,7 @@ export function OrderForm({ scrollToForm, preselectedColor }: OrderFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // IMPORTANT: Replace this URL with your Google Apps Script Web App URL
-  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx-W3Dup10trriUqcHHbVTYNs6-JwhMqHWCw7OoQ7rOi-0Teq23IYrDmAAJ6a59LeQq/exec';
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwQm4HYz2KBJKPDlzgyxXkmcpe1gsYFDI5-gMUFMg3icl6PpC1yRF7ivlIxclP-A7SW/exec';
 
   // Handle input focus - scroll into view when keyboard appears
   const handleInputFocus = (e: any) => {
