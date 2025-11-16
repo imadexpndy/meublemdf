@@ -9,6 +9,8 @@ import { TestimonialCard } from './components/TestimonialCard';
 import { FAQ } from './components/FAQ';
 import { ImageWithFallback } from './components/figma/ImageWithFallback';
 import { StickyBuyBar } from './components/StickyBuyBar';
+import { PrivacyPolicy } from './components/PrivacyPolicy';
+import { TermsConditions } from './components/TermsConditions';
 import mainImageSrc from './main image.png';
 import woodColorImg from './wood color.jpg';
 import whiteColorImg from './white.png';
@@ -36,6 +38,8 @@ export default function App() {
   const [mainImage, setMainImage] = useState(mainImageSrc);
   const [selectedColor, setSelectedColor] = useState('wood');
   const [isFormVisible, setIsFormVisible] = useState(false);
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
+  const [showTermsConditions, setShowTermsConditions] = useState(false);
 
   const colorGallery = [
     {
@@ -518,9 +522,9 @@ export default function App() {
             <div dir="rtl">
               <h4 className="mb-4 text-[#D4A574]">روابط سريعة</h4>
               <ul className="space-y-2 text-sm text-white/80">
-                <li>الرئيسية</li>
-                <li>المتجر</li>
-                <li>اتصل بنا</li>
+                <li className="hover:text-[#D4A574] cursor-pointer transition-colors" onClick={() => setShowPrivacyPolicy(true)}>سياسة الخصوصية</li>
+                <li className="hover:text-[#D4A574] cursor-pointer transition-colors" onClick={() => setShowTermsConditions(true)}>الشروط والأحكام</li>
+                <li className="hover:text-[#D4A574] cursor-pointer transition-colors">اتصل بنا</li>
               </ul>
             </div>
             <div dir="rtl">
@@ -551,6 +555,12 @@ export default function App() {
       {!isFormVisible && (
         <StickyBuyBar selectedColor={selectedColor} setSelectedColor={setSelectedColor} />
       )}
+
+      {/* Privacy Policy Modal */}
+      <PrivacyPolicy open={showPrivacyPolicy} onOpenChange={setShowPrivacyPolicy} />
+      
+      {/* Terms and Conditions Modal */}
+      <TermsConditions open={showTermsConditions} onOpenChange={setShowTermsConditions} />
 
       {/* Full-Screen Image Modal */}
       {selectedImage && (
