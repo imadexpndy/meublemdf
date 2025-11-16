@@ -522,8 +522,22 @@ export default function App() {
             <div dir="rtl">
               <h4 className="mb-4 text-[#D4A574]">روابط سريعة</h4>
               <ul className="space-y-2 text-sm text-white/80">
-                <li className="hover:text-[#D4A574] cursor-pointer transition-colors" onClick={() => setShowPrivacyPolicy(true)}>سياسة الخصوصية</li>
-                <li className="hover:text-[#D4A574] cursor-pointer transition-colors" onClick={() => setShowTermsConditions(true)}>الشروط والأحكام</li>
+                <li>
+                  <button 
+                    onClick={() => setShowPrivacyPolicy(true)}
+                    className="hover:text-[#D4A574] cursor-pointer transition-colors text-right w-full"
+                  >
+                    سياسة الخصوصية
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => setShowTermsConditions(true)}
+                    className="hover:text-[#D4A574] cursor-pointer transition-colors text-right w-full"
+                  >
+                    الشروط والأحكام
+                  </button>
+                </li>
                 <li className="hover:text-[#D4A574] cursor-pointer transition-colors">اتصل بنا</li>
               </ul>
             </div>
