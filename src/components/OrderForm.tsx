@@ -4,6 +4,7 @@ import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { toast } from 'sonner@2.0.3';
 import { Check } from 'lucide-react';
+import { sendFacebookPurchaseEvent } from '../utils/facebookConversionsApi';
 
 interface OrderFormProps {
   scrollToForm?: boolean;
@@ -13,6 +14,7 @@ interface OrderFormProps {
 export function OrderForm({ scrollToForm, preselectedColor }: OrderFormProps) {
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
     phone: '',
     city: '',
     address: '',
@@ -51,7 +53,7 @@ export function OrderForm({ scrollToForm, preselectedColor }: OrderFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.phone || !formData.city || !formData.address) {
+    if (!formData.name || !formData.email || !formData.phone || !formData.city || !formData.address) {
       toast.error('المرجو ملء جميع الحقول', {
         duration: 3000,
       });
@@ -105,6 +107,22 @@ export function OrderForm({ scrollToForm, preselectedColor }: OrderFormProps) {
           }
         });
 
+      // Send Facebook Conversion Event
+      const nameParts = formData.name.trim().split(' ');
+      const firstName = nameParts[0] || '';
+      const lastName = nameParts.slice(1).join(' ') || '';
+      
+      sendFacebookPurchaseEvent({
+        email: formData.email,
+        phone: formData.phone,
+        firstName: firstName,
+        lastName: lastName,
+        city: formData.city,
+        currency: 'MAD',
+        value: 299 * parseInt(formData.quantity), // Assuming 299 MAD per unit
+        eventSourceUrl: window.location.href,
+      });
+
       // Show success immediately (optimistic UI)
       // Since we use no-cors, we can't verify the response anyway
       setTimeout(() => {
@@ -115,6 +133,7 @@ export function OrderForm({ scrollToForm, preselectedColor }: OrderFormProps) {
         // Reset form
         setFormData({
           name: '',
+          email: '',
           phone: '',
           city: '',
           address: '',
@@ -146,6 +165,22 @@ export function OrderForm({ scrollToForm, preselectedColor }: OrderFormProps) {
           placeholder="مثال: محمد الحسني"
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          onFocus={handleInputFocus}
+          className="text-right bg-input-background border-border"
+          required
+        />
+      </div>
+
+      <div className="space-y-2" dir="rtl">
+        <Label htmlFor="email" className="text-right block">
+          البريد الإلكتروني <span className="text-destructive">*</span>
+        </Label>
+        <Input
+          id="email"
+          type="email"
+          placeholder="مثال: mohamed@example.com"
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           onFocus={handleInputFocus}
           className="text-right bg-input-background border-border"
           required
