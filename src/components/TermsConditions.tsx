@@ -1,5 +1,4 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from './ui/dialog';
-import { ScrollArea } from './ui/scroll-area';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog';
 
 interface TermsConditionsProps {
   open: boolean;
@@ -9,11 +8,14 @@ interface TermsConditionsProps {
 export function TermsConditions({ open, onOpenChange }: TermsConditionsProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[80vh]">
+      <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl text-right" dir="rtl">الشروط والأحكام</DialogTitle>
+          <DialogDescription className="sr-only">
+            Terms and conditions for MEUBLE MDF
+          </DialogDescription>
         </DialogHeader>
-        <ScrollArea className="h-[60vh] pr-4">
+        <div className="overflow-y-auto max-h-[65vh] pr-4">
           <div className="space-y-6 text-right" dir="rtl">
             <section>
               <p className="text-sm text-muted-foreground mb-4">
@@ -184,7 +186,7 @@ export function TermsConditions({ open, onOpenChange }: TermsConditionsProps) {
               </div>
             </section>
           </div>
-        </ScrollArea>
+        </div>
       </DialogContent>
     </Dialog>
   );

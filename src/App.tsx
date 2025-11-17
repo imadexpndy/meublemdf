@@ -17,6 +17,7 @@ import whiteColorImg from './white.png';
 import brownColorImg from './brown.png';
 import gallery1 from './51DIqM9wGRL._AC_UF1000,1000_QL80_.jpg';
 import gallery2 from './WhatsApp-Image-2025-05-11-at-06.29.51_c6474f63.jpg';
+import logoImg from './mdf logo@4x.png';
 import { 
   Maximize2, 
   Award, 
@@ -103,8 +104,19 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="min-h-screen bg-background pb-24">
       <Toaster position="top-center" richColors />
+      
+      {/* Logo Header */}
+      <div className="bg-white border-b border-border py-2">
+        <div className="container mx-auto px-4 flex justify-center">
+          <img 
+            src={logoImg} 
+            alt="MEUBLE MDF Logo" 
+            className="h-10 md:h-12 object-contain"
+          />
+        </div>
+      </div>
       
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-[#8B5A2B]/5 to-background pb-8">
@@ -122,7 +134,7 @@ export default function App() {
           {/* Product Image */}
           <div className="max-w-2xl mx-auto mb-6 relative">
             <div className="absolute top-4 left-4 bg-destructive text-white px-4 py-2 rounded-lg z-10 shadow-lg">
-              <span>خصم 31% 🔥</span>
+              <span>-31%</span>
             </div>
             <ImageWithFallback
               src={mainImage}
@@ -196,7 +208,7 @@ export default function App() {
                 1029 درهم فقط
               </div>
               <div className="text-destructive mb-4">
-                🔥 وفر 470 درهم (خصم 31%)
+                🔥 وفر 470 درهم (-31%)
               </div>
               <div className="text-sm text-muted-foreground">
                 شامل التوصيل المجاني 🚚 + ضمان الجودة ✅
@@ -394,7 +406,7 @@ export default function App() {
                     <h4 className="font-bold text-red-600">عرض محدود!</h4>
                   </div>
                   <p className="text-sm text-gray-700 mb-4">
-                    خصم 31% غادي يخلص قريب - بقا معانا غير عدد محدود!
+                    -31% غادي يخلص قريب - بقا معانا غير عدد محدود!
                   </p>
                   <Button
                     size="lg"
@@ -496,7 +508,7 @@ export default function App() {
                   1029 درهم فقط
                 </div>
                 <div className="text-destructive mb-4">
-                  🔥 وفر 470 درهم (خصم 31%)
+                  🔥 وفر 470 درهم (-31%)
                 </div>
                 <div className="text-sm text-muted-foreground">
                   شامل التوصيل المجاني 🚚 + ضمان الجودة ✅
@@ -510,7 +522,7 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#2C2520] text-white py-10">
+      <footer className="bg-[#2C2520] text-white py-10 relative z-[60]">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div dir="rtl">
@@ -519,29 +531,33 @@ export default function App() {
                 نوفر لك أفضل الحلول العملية للمساحات الصغيرة. جودة عالية وأسعار تنافسية.
               </p>
             </div>
-            <div dir="rtl">
+            <div dir="rtl" className="relative z-10">
               <h4 className="mb-4 text-[#D4A574]">روابط سريعة</h4>
-              <ul className="space-y-2 text-sm text-white/80">
-                <li>
+              <ul className="space-y-2 text-sm text-white/80 relative z-10">
+                <li className="relative z-10">
                   <button 
                     type="button"
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
                       console.log('Privacy Policy clicked!');
                       setShowPrivacyPolicy(true);
                     }}
-                    className="hover:text-[#D4A574] cursor-pointer transition-colors text-right w-full bg-transparent border-none p-0 font-inherit text-white/80"
+                    className="hover:text-[#D4A574] hover:underline cursor-pointer transition-all text-right w-full bg-transparent border-none p-0 font-inherit text-white/80 pointer-events-auto relative z-10 block"
                   >
                     سياسة الخصوصية
                   </button>
                 </li>
-                <li>
+                <li className="relative z-10">
                   <button 
                     type="button"
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
                       console.log('Terms & Conditions clicked!');
                       setShowTermsConditions(true);
                     }}
-                    className="hover:text-[#D4A574] cursor-pointer transition-colors text-right w-full bg-transparent border-none p-0 font-inherit text-white/80"
+                    className="hover:text-[#D4A574] hover:underline cursor-pointer transition-all text-right w-full bg-transparent border-none p-0 font-inherit text-white/80 pointer-events-auto relative z-10 block"
                   >
                     الشروط والأحكام
                   </button>
