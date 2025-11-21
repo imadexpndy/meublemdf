@@ -205,7 +205,7 @@ export default function App() {
                 السعر العادي: 1499 درهم
               </div>
               <div className="text-4xl mb-2 text-[#8B5A2B]">
-                1029 درهم فقط
+                1050 درهم فقط
               </div>
               <div className="text-destructive mb-4">
                 🔥 وفر 470 درهم (-31%)
@@ -215,6 +215,17 @@ export default function App() {
               </div>
             </div>
           </div>
+
+          {/* Order Form Section */}
+          <section id="order-form" className="max-w-2xl mx-auto mb-8">
+            <div className="text-center mb-6" dir="rtl">
+              <h2 className="text-3xl md:text-4xl mb-2" style={{ fontWeight: 900 }}>اطلب المكتب ديالك دابا! 🎯</h2>
+              <p className="text-muted-foreground">
+                الدفع عند الاستلام - توصيل مجاني لجميع المدن
+              </p>
+            </div>
+            <OrderForm preselectedColor={selectedColor} />
+          </section>
 
           {/* CTA Button */}
           <div className="text-center mb-6">
@@ -253,19 +264,6 @@ export default function App() {
       {/* Trust Badges */}
       <section className="container mx-auto px-4 py-8">
         <TrustBadges />
-      </section>
-
-      {/* Order Form Section 1 */}
-      <section id="order-form" className="container mx-auto px-4 py-8">
-        <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-6" dir="rtl">
-            <h2 className="text-3xl md:text-4xl mb-2" style={{ fontWeight: 900 }}>اطلب المكتب ديالك دابا! 🎯</h2>
-            <p className="text-muted-foreground">
-              الدفع عند الاستلام - توصيل مجاني لجميع المدن
-            </p>
-          </div>
-          <OrderForm preselectedColor={selectedColor} />
-        </div>
       </section>
 
       {/* Features Section */}
@@ -505,7 +503,7 @@ export default function App() {
                   السعر العادي: 1499 درهم
                 </div>
                 <div className="text-4xl mb-2 text-[#8B5A2B]">
-                  1029 درهم فقط
+                  1050 درهم فقط
                 </div>
                 <div className="text-destructive mb-4">
                   🔥 وفر 470 درهم (-31%)

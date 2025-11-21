@@ -77,7 +77,7 @@ export function StickyBuyBar({ selectedColor, setSelectedColor }: StickyBuyBarPr
               className="flex-1 !bg-[#10B981] !text-white !py-4 !h-auto text-sm md:text-base font-bold shadow-lg !hover:bg-[#10B981]"
             >
               <ShoppingCart className="w-4 h-4" />
-              <span dir="rtl" className="text-white">اطلب الآن - 1029 درهم</span>
+              <span dir="rtl" className="text-white">اطلب الآن - 1050 درهم</span>
             </Button>
           </div>
         </div>
